@@ -478,7 +478,10 @@ end
 function buttonClick_recall()
     for guid, entry in pairs(memoryList) do
         local obj = getObjectFromGUID(guid)
-        if obj ~= nil then self.putObject(obj) end
+        if obj ~= nil then
+            self.putObject(obj)
+            obj.destruct()
+        end
     end
     broadcastToAll("Objects Recalled", {1,1,1})
 end
